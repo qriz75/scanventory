@@ -1,294 +1,198 @@
-Scanventory
+# 🌐 **Scanventory** 🚀
 
-Scanventory is a versatile, cross-platform network mapping and inventory management tool designed to operate seamlessly on laptops, desktops, servers, and mini-computers like the Raspberry Pi. It dynamically scans any available network adapter to discover and classify network connections, providing secure and discreet insights into your network infrastructure.
+![Scanventory Banner](https://via.placeholder.com/1200x300?text=Scanventory+Banner)
 
-Table of Contents
-Features
-Technology Stack
-Installation
-Prerequisites
-Setup Guide
-Usage
-Running Scanventory
-Remote Access
-Configuration
-Security
-Contributing
-License
-Acknowledgments
-Features
-Cross-Platform Compatibility: Runs on Windows, macOS, Linux, Raspberry Pi, and other mini-computers.
-Dynamic Network Adapter Scanning: Automatically detects and utilizes available network interfaces to discover and classify connections.
-Comprehensive Network Mapping: Visual representation of network topology, including switches, routers, servers, and connected devices.
-Real-Time Utilization Analysis: Monitors network performance metrics such as bandwidth usage, latency, and packet loss.
-Supervisor Approval Workflow: Integrated with Active Directory for role-based access control and scan approvals.
-Secure Remote Access: Manage and troubleshoot Scanventory instances remotely via SSH or RDP.
-Discreet Operations: Designed to operate securely and minimize visibility within network environments.
-Scalable Deployment: Suitable for small-scale setups to large, segmented networks.
-Automated Reporting: Generate and export detailed network reports in multiple formats (PDF, CSV, HTML).
-Technology Stack
-Programming Language: Python 3.x
-GUI Framework: PyQt5/PySide2
-Network Scanning: Nmap, Scapy, pysnmp, python-nmap
-Visualization: NetworkX, Matplotlib, Plotly, Graphviz
-Web Framework (Optional): Flask/Django
-Database: SQLite, PostgreSQL/MySQL (optional)
-Configuration Management: Ansible (optional)
-Remote Access: SSH, RDP
-Installation
-Prerequisites
-Before installing Scanventory, ensure your system meets the following requirements:
+**Scanventory** is a cross-platform network mapping and inventory management tool that seamlessly runs on laptops, desktops, servers, and mini-computers like Raspberry Pi. It dynamically scans available network adapters to discover and classify connections, giving you clear, secure insights into your network infrastructure.
 
-Operating System: Windows 10/11, macOS, Linux (Ubuntu, CentOS, etc.), Raspberry Pi OS.
-Python: Python 3.7 or higher.
-Network Access: Administrative privileges to install network scanning tools and libraries.
-Hardware: Compatible device (Laptop, Desktop, Server, Raspberry Pi4, etc.) with at least:
-CPU: Dual-core processor.
-RAM: 4GB (8GB recommended for larger networks).
-Storage: Minimum 32GB SSD or equivalent.
-Network Interfaces: Ethernet port and/or Wi-Fi adapter.
-Setup Guide
-Follow the steps below to set up the development environment and install Scanventory.
+## 🗃 **Table of Contents**
 
-1. Clone the Repository
-bash
-Copy code
-git clone https://github.com/your-username/scanventory.git
-cd scanventory
-2. Create and Activate a Virtual Environment
-Creating a virtual environment ensures that dependencies are managed effectively.
+- [✨ Features](#-features)
+- [🔧 Technology Stack](#-technology-stack)
+- [⚡ Installation](#-installation)
+  - [Prerequisites](#prerequisites)
+  - [Setup Guide](#setup-guide)
+- [🚀 Usage](#-usage)
+- [⚙ Configuration](#-configuration)
+- [🔒 Security](#-security)
+- [🤝 Contributing](#-contributing)
+- [📜 License](#-license)
+- [🙏 Acknowledgments](#-acknowledgments)
 
-Linux/macOS:
+## ✨ **Features**
 
-bash
-Copy code
-python3 -m venv venv
-source venv/bin/activate
-Windows:
+- **Cross-Platform**: Works effortlessly on Windows, macOS, Linux, and Raspberry Pi.
+- **Dynamic Adapter Scanning**: Automatically detects and utilizes network adapters to find connections.
+- **Comprehensive Network Mapping**: Visualize your network topology with real-time insights.
+- **Utilization Analysis**: Monitor metrics like bandwidth usage, latency, and packet loss.
+- **Supervisor Approval Workflow**: Integrated with Active Directory for secure scan approvals.
+- **Secure & Discreet**: Designed to operate quietly while prioritizing security.
+- **Automated Reporting**: Generate and export network reports in multiple formats (PDF, CSV, HTML).
 
-bash
-Copy code
-python -m venv venv
-venv\Scripts\activate
-3. Install Required Python Packages
-Ensure pip is up to date and install dependencies.
+## 🔧 **Technology Stack**
 
-bash
-Copy code
-pip install --upgrade pip
-pip install -r requirements.txt
-If requirements.txt is not present, create one with the following content:
+- **Language**: Python 3.x
+- **GUI Framework**: PyQt5/PySide2
+- **Network Scanning**: Nmap, Scapy, pysnmp, python-nmap
+- **Visualization**: NetworkX, Matplotlib, Plotly, Graphviz
+- **Web Framework (Optional)**: Flask/Django
+- **Database**: SQLite (with support for PostgreSQL/MySQL)
+- **Remote Access**: SSH, RDP
+- **Configuration Management**: Ansible (optional)
 
-plaintext
-Copy code
-pysnmp
-python-nmap
-scapy
-networkx
-matplotlib
-plotly
-pyqt5
-flask
-sqlalchemy
-pygraphviz
-4. Install External Tools
-Nmap:
+## ⚡ **Installation**
 
-Linux/Raspberry Pi OS:
+### **Prerequisites**
 
-bash
-Copy code
-sudo apt update
-sudo apt install -y nmap
-macOS (using Homebrew):
+Before installing **Scanventory**, ensure that your system meets the following requirements:
 
-bash
-Copy code
-brew install nmap
-Windows:
+- **Operating System**: Windows 10/11, macOS, Linux, or Raspberry Pi OS.
+- **Python**: Version 3.7 or higher.
+- **Hardware**: Dual-core CPU, 4GB RAM (8GB recommended), and network interfaces for scanning.
 
-Download and install from the official Nmap website.
+### **Setup Guide**
 
-Graphviz:
+1. **Clone the Repository**:
 
-Linux/Raspberry Pi OS:
+   ```bash
+   git clone https://github.com/your-username/scanventory.git
+   cd scanventory
+   ```
 
-bash
-Copy code
-sudo apt install -y graphviz
-macOS (using Homebrew):
+2. **Set Up a Virtual Environment**:
 
-bash
-Copy code
-brew install graphviz
-Windows:
+   ```bash
+   python -m venv venv
+   ```
 
-Download and install from the official Graphviz website.
+   Activate the virtual environment:
 
-5. Configure Environment Variables
-Create a .env file in the project root to store sensitive information and configuration settings.
+   - **Windows**: `venv\Scripts\activate`
+   - **Linux/macOS**: `source venv/bin/activate`
 
-bash
-Copy code
-touch .env
-Add the following to .env:
+3. **Install Dependencies**:
 
-dotenv
-Copy code
-AD_SERVER=ad.example.com
-AD_USER=scanventory_user
-AD_PASSWORD=securepassword
-AWS_ACCESS_KEY_ID=your_aws_access_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-DATABASE_URL=sqlite:///scanventory.db
-Ensure that .env is added to .gitignore to prevent sensitive information from being committed to version control.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-6. Set Up the Database
-Initialize the database using SQLAlchemy or your preferred ORM.
+4. **Install External Tools**:
 
-bash
-Copy code
-python manage.py db init
-python manage.py db migrate
-python manage.py db upgrade
-Replace manage.py with the actual script responsible for database migrations.
+   - **Nmap**: Download from [Nmap's official site](https://nmap.org/download.html) or use a package manager.
+   - **Graphviz**: Install from [Graphviz's site](https://graphviz.org/download/) or via Homebrew (macOS): `brew install graphviz`.
 
-Usage
-Running Scanventory
-Activate your virtual environment and navigate to the project directory.
+5. **Set Up Environment Variables**:
 
-Linux/macOS:
+   Create a `.env` file in the project root to store sensitive data:
 
-bash
-Copy code
-source venv/bin/activate
-Windows:
+   ```dotenv
+   AD_SERVER=ad.example.com
+   AD_USER=scanventory_user
+   AD_PASSWORD=your_password_here
+   DATABASE_URL=sqlite:///scanventory.db
+   ```
 
-bash
-Copy code
-venv\Scripts\activate
-Run the main application script.
+## 🚀 **Usage**
 
-bash
-Copy code
-python app.py
-Remote Access
-SSH Access:
+1. **Activate Virtual Environment**:
 
-Ensure SSH is enabled on your device.
+   ```bash
+   source venv/Scripts/activate  # Windows
+   source venv/bin/activate      # Linux/macOS
+   ```
 
-Linux/Raspberry Pi OS/macOS:
+2. **Run the Application**:
 
-bash
-Copy code
-ssh user@your-device-ip
-Windows:
+   ```bash
+   python app.py
+   ```
 
-Use an SSH client like PuTTY or Windows Terminal.
+3. **Remote Access**:
 
-RDP Access (Optional):
+   - **SSH**: Connect to your Scanventory machine remotely using SSH (`ssh user@your-device-ip`).
+   - **RDP**: Set up RDP for GUI-based access.
 
-For GUI-based remote access.
+## ⚙ **Configuration**
 
-Linux/Raspberry Pi OS:
+**Scanventory** allows customization through the `.env` file:
 
-Install and configure xrdp.
+- **Active Directory Settings**:
 
-bash
-Copy code
-sudo apt install -y xrdp
-sudo systemctl enable xrdp
-sudo systemctl start xrdp
-Windows/macOS:
+  ```dotenv
+  AD_SERVER=ad.example.com
+  AD_USER=scanventory_user
+  AD_PASSWORD=securepassword
+  ```
 
-Use the built-in Remote Desktop Client or third-party applications.
+- **Database Settings**:
 
-Configuration
-Customize Scanventory settings by editing the .env file.
+  ```dotenv
+  DATABASE_URL=sqlite:///scanventory.db
+  ```
 
-Active Directory Settings:
+Refer to the [Configuration Guide](docs/configuration.md) for detailed settings.
 
-dotenv
-Copy code
-AD_SERVER=ad.example.com
-AD_USER=scanventory_user
-AD_PASSWORD=securepassword
-AWS Integration:
+## 🔒 **Security**
 
-dotenv
-Copy code
-AWS_ACCESS_KEY_ID=your_aws_access_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-Database Configuration:
+- **Encryption**: Sensitive data is encrypted both at rest and in transit using SSL/TLS.
+- **Authentication**: Integrates with Microsoft Active Directory for secure authentication.
+- **Access Control**: Implements Role-Based Access Control (RBAC) for restricting access based on user roles.
+- **Audit Logs**: Maintains audit trails for compliance and security monitoring.
 
-dotenv
-Copy code
-DATABASE_URL=sqlite:///scanventory.db
-Refer to the Configuration Guide for detailed settings.
+## 🤝 **Contributing**
 
-Security
-Scanventory is designed with security as a paramount concern.
+We welcome contributions from the community! Here's how to get started:
 
-Encryption:
-All sensitive data is encrypted at rest and in transit.
-Use TLS/SSL for all communications.
-Authentication:
-Integrates with Active Directory for secure user authentication and role management.
-Supports multi-factor authentication (MFA) for enhanced security.
-Access Control:
-Implements Role-Based Access Control (RBAC) to restrict functionalities based on user roles.
-Audit Trails:
-Maintains detailed logs of all activities for compliance and forensic purposes.
-For more information, refer to the Security Guidelines.
+1. **Fork the Project**:
 
-Contributing
-We welcome contributions from the community! To contribute to Scanventory, please follow these guidelines:
+   Click on the **Fork** button to create your own copy of the repository.
 
-Fork the Repository
+2. **Clone the Forked Repository**:
 
-Click the "Fork" button at the top right of this page to create a personal copy of the repository.
+   ```bash
+   git clone https://github.com/your-username/scanventory.git
+   cd scanventory
+   ```
 
-Clone Your Fork
+3. **Create a Branch for Your Feature**:
 
-bash
-Copy code
-git clone https://github.com/your-username/scanventory.git
-cd scanventory
-Create a New Branch
+   ```bash
+   git checkout -b feature/new-feature
+   ```
 
-bash
-Copy code
-git checkout -b feature/your-feature-name
-Make Your Changes
+4. **Make Changes and Commit**:
 
-Implement your feature or bug fix.
+   ```bash
+   git commit -m "Add feature: new feature description"
+   ```
 
-Commit Your Changes
+5. **Push to Your Fork**:
 
-bash
-Copy code
-git commit -m "Add feature: your feature description"
-Push to Your Fork
+   ```bash
+   git push origin feature/new-feature
+   ```
 
-bash
-Copy code
-git push origin feature/your-feature-name
-Create a Pull Request
+6. **Submit a Pull Request**: Navigate to your repository on GitHub and click "Compare & pull request".
 
-Navigate to the original repository and click "Compare & pull request" to submit your changes for review.
+### **Code of Conduct**
 
-Please adhere to the Code of Conduct when contributing.
+Please follow our [Code of Conduct](CODE_OF_CONDUCT.md) to ensure a positive environment for all contributors.
 
-License
-This project is licensed under the MIT License.
+## 📜 **License**
 
-Acknowledgments
-Nmap: Powerful network scanning tool.
-NetworkX: Comprehensive library for network graph creation.
-PyQt5: Robust GUI framework.
-Flask: Lightweight web framework for optional web-based interfaces.
-Active Directory: Essential for secure authentication and authorization.
-Community Contributors: Thanks to all the open-source contributors whose tools and libraries make Scanventory possible.
-For any questions, issues, or feature requests, please open an issue on the GitHub Issues page.
+This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute this project, respecting the terms of the license.
 
-Happy Networking with Scanventory!
+## 🙏 **Acknowledgments**
+
+- **Nmap**: Powerful network scanning tool used for discovery.
+- **NetworkX**: Comprehensive library for graph analysis and visualization.
+- **PyQt5**: For our slick and responsive GUI.
+- **Community Contributors**: We thank all the contributors who have helped make Scanventory possible!
+
+---
+
+**Happy Scanning!** 🔍✨  
+*For questions, issues, or feature requests, please open an issue on the [GitHub Issues](https://github.com/your-username/scanventory/issues) page.*
+
+---
+
+Feel free to customize the sections to better reflect your specific needs. Let me know if there’s anything else you’d like to add or modify!
