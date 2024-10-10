@@ -1,0 +1,10 @@
+pysnmp
+python-nmap
+scapy
+networkx
+matplotlib
+plotly
+pyqt5
+flask
+sqlalchemy
+pygraphviz
