@@ -1,6 +1,8 @@
 # 🌐 **Scanventory** 🚀
 
-![Scanventory Banner](https://via.placeholder.com/1200x300?text=Scanventory+Banner)
+!\[Scanventory Banner\]\(docs/banner.png\)
+
+> **Note**: Replace `docs/banner.png` with your actual banner image or customize this section as needed. If you do not have a banner image, you can remove this line.
 
 **Scanventory** is a cross-platform network mapping and inventory management tool that seamlessly runs on laptops, desktops, servers, and mini-computers like Raspberry Pi. It dynamically scans available network adapters to discover and classify connections, giving you clear, secure insights into your network infrastructure.
 
@@ -54,7 +56,7 @@ Before installing **Scanventory**, ensure that your system meets the following r
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-username/scanventory.git
+   git clone https://github.com/qriz75/scanventory.git
    cd scanventory
    ```
 
@@ -149,7 +151,7 @@ We welcome contributions from the community! Here's how to get started:
 2. **Clone the Forked Repository**:
 
    ```bash
-   git clone https://github.com/your-username/scanventory.git
+   git clone https://github.com/qriz75/scanventory.git
    cd scanventory
    ```
 
